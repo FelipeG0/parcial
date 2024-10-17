@@ -1,24 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Login from './Components/Login';
+import UserProfile from './Components/UserProfile';
+import SportCard from './Components/SportCard';
+import { getUserData } from './Service/UserService';
 
 function App() {
+  const userData = getUserData();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+
+
+        <Route 
+          path="/home" 
+          element={
+            <div className="app">
+              <header className="user-info">
+                <UserProfile user={userData} />
+              </header>
+              <main className="content">
+                <SportCard sportsData={userData.sportsData} />
+              </main>
+            </div>
+          } 
+        />
+
+        <Route path="*" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
