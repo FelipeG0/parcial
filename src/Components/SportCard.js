@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Detalle from './Detalle';
+import { useTranslation } from 'react-i18next';
 
 const SportCards = ({ sportsData = [] }) => {
+  const {t} = useTranslation();
   const [selectedCard, setSelectedCard] = useState(null);
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -21,8 +23,8 @@ const SportCards = ({ sportsData = [] }) => {
           <div className="main-card" onClick={() => openModal({ sport, length, duration, city, imageUrl })}>
             <img src={imageUrl} alt={`${sport}`} className="main-card-image" />
             <div className="main-card-details">
-              <h4>{`${sport} Session`}</h4>
-              <p>{`Recorrido alrededor de ${city}`}</p>
+              <h4>{sport}</h4>
+              <p>{t("sportCard.route")} {city}</p>
               <p>{`${length} - ${duration}`}</p>
             </div>
           </div>

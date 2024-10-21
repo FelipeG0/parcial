@@ -1,0 +1,34 @@
+{ 
+    "login" : {
+      "welcome": "Login to your account",
+      "email": "Email address",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "signUp" : "Don´t have an account?",
+      "signFree" : "Sign Free!",
+      "forgotPassword": "Forgot password?",
+      "loginButton": "Login with email",
+      "loginMedia" : "Login with media to get in quick",
+      "signFacebook" : "Sign in with Facebook",
+      "signTwiter" : "Sign in with Twiter",
+      "signGoogle" : "Sign in with Google",
+      "errorEmail" : "Email not valid",
+      "errorPassword" : "Password must be at least 8 characters",
+      "emailReq" : "Email is required",
+      "passwordReq" : "Password is required",
+      "passwordValidate1" : "The password must have at least one capital letter",
+      "passwordValidate2" : "The password must have at least one lowercase letter",
+      "passwordValidate3" : "The password must have at least one number",
+      "passwordValidate4" : "The password must have at least one symbol"
+    },
+    "detail" : {
+      "session" : "session",
+      "length" : "length",
+      "duration" : "duration",
+      "route" : "Tour around",
+      "close" : "close"
+    }, 
+    "sportCard" : {
+      "route" : "Tour around"
+    }
+  }

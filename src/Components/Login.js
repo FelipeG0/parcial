@@ -1,9 +1,11 @@
 import React from 'react';
 
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
+    const {t} = useTranslation();
     const navigate = useNavigate();
     const {
       register,
@@ -25,54 +27,54 @@ function Login() {
         <div className="login-container">
           <div className="login-box">
             <div className="social-login">
-              <h2>Login with media to get in quick</h2>
-              <a href="https://facebook.com/" className="social-button facebook">Sign in with Facebook</a>
-              <a href="https://x.com/" className="social-button twitter">Sign in with Twitter</a>
-              <a href="https://accounts.google.com/" className="social-button google">Sign in with Google</a>
+              <h2>{t('login.loginMedia')}</h2>
+              <a href="https://facebook.com/" className="social-button facebook">{t("login.signFacebook")}</a>
+              <a href="https://x.com/" className="social-button twitter">{t("login.signTwiter")}</a>
+              <a href="https://accounts.google.com/" className="social-button google">{t("login.signGoogle")}</a>
             </div>
             <div className="form-login">
               <form onSubmit={onSubmit}>
-                <h2>Login to your account</h2>
+                <h2>{t("login.welcome")}</h2>
                 <div className="signup-container">
-                    <p>Don't have an account?</p>
-                    <button className="sign-up">Sign up free</button>
+                    <p>{t("login.signUp")}</p>
+                    <button className="sign-up">{t("login.signFree")}</button>
                 </div>
             
 
                 
-                <label>Email address</label>
+                <label>{t("login.email")}</label>
                 <input
                   type="email"
                   name="email"
                   {...register("email", {
-                    required: "Correo es requerido",
+                    required: t("login.emailReq"),
                     pattern: {
                       value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-                      message: "Correo no válido",
+                      message: t("login.errorEmail"),
                     },
                   })}
                 />
                 {errors.email && <span className="error">{errors.email.message}</span>}
     
-                <label>Password</label>
+                <label>{t("login.password")}</label>
                 <input
                   type="password"
                   name="password"
                   {...register("password", {
-                    required: "Contraseña requerida",
+                    required:t("login.passwordReq"),
                     minLength: {
                       value: 8,
-                      message: "La contraseña debe tener al menos 8 caracteres",
+                      message: t("login.errorPassword"),
                     },
                     validate: {
                       hasUppercase: (value) =>
-                        /[A-Z]/.test(value) || "La contraseña debe tener al menos una mayuscula",
+                        /[A-Z]/.test(value) || t("login.passwordValidate1"),
                       hasLowercase: (value) =>
-                        /[a-z]/.test(value) || "La contraseña debe tener al menos una minuscula",
+                        /[a-z]/.test(value) || t("login.passwordValidate2"),
                       hasNumber: (value) =>
-                        /\d/.test(value) || "La contraseña debe tener al menos un numero",
+                        /\d/.test(value) || t("login.passwordValidate3"),
                       hasSymbol: (value) =>
-                        /[!@#$%^&*(),.?":{}|<>]/.test(value) || "La contraseña debe tener al menos un simbolo",
+                        /[!@#$%^&*(),.?":{}|<>]/.test(value) || t("login.passwordValidate4"),
                     },
                   })}
                 />
@@ -81,12 +83,12 @@ function Login() {
                 <div className="login-button">
               <div className="remember-me">
                 <input type="checkbox" id="rememberMe" />
-                <label htmlFor="rememberMe">Remember me</label>
+                <label htmlFor="rememberMe">{t("login.rememberMe")}</label>
               </div>
-              <button className="forgot-password">Forgot password?</button>
+              <button className="forgot-password">{t("login.forgotPassword")}</button>
             </div>
 
-            <button type="submit" className="submit-button">Login with email</button>
+            <button type="submit" className="submit-button">{t("login.loginButton")}</button>
               </form>
             </div>
           </div>
